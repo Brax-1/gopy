@@ -89,7 +89,7 @@ static inline void gopy_err_gopyvar() {
 */
 import "C"
 import (
-	"git.druva.org/akash.yadav/gopy/gopyh" // gopyvarr
+	"github.com/Brax-1/gopy/gopyh" // gopyvarr
 	%[6]s
 )
 

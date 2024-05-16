@@ -7,7 +7,7 @@ package funcs
 import (
 	"fmt"
 
-	"git.druva.org/akash.yadav/gopy/_examples/cpkg"
+	"github.com/Brax-1/gopy/_examples/cpkg"
 )
 
 type FunStruct struct {

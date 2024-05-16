@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"log"
 
-	"git.druva.org/akash.yadav/gopy/bind"
+	"github.com/Brax-1/gopy/bind"
 	"github.com/gonuts/commander"
 	"github.com/gonuts/flag"
 )
@@ -23,7 +23,7 @@ gen generates (C)Python language bindings for Go package(s).
 
 ex:
  $ gopy gen [options] <go-package-name> [other-go-package...]
- $ gopy gen git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy gen github.com/Brax-1/gopy/_examples/hi
 `,
 		Flag: *flag.NewFlagSet("gopy-gen", flag.ExitOnError),
 	}

@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"git.druva.org/akash.yadav/gopy/bind"
+	"github.com/Brax-1/gopy/bind"
 )
 
 // 1 = pkg name, 2 = -user, 3 = version 4 = author, 5 = email, 6 = desc, 7 = url

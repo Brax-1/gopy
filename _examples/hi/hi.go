@@ -8,8 +8,8 @@ package hi
 import (
 	"fmt"
 
-	"git.druva.org/akash.yadav/gopy/_examples/cpkg"
-	"git.druva.org/akash.yadav/gopy/_examples/structs"
+	"github.com/Brax-1/gopy/_examples/cpkg"
+	"github.com/Brax-1/gopy/_examples/structs"
 )
 
 const (

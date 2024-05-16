@@ -15,7 +15,7 @@ import (
 	"github.com/gonuts/flag"
 	"github.com/pkg/errors"
 
-	"git.druva.org/akash.yadav/gopy/bind"
+	"github.com/Brax-1/gopy/bind"
 )
 
 // BuildCfg contains command options and binding generation options

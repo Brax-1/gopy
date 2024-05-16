@@ -7,7 +7,7 @@
 
 package main
 
-import "git.druva.org/akash.yadav/gopy/bind"
+import "github.com/Brax-1/gopy/bind"
 
 const (
 	libExt       = ".pyd"

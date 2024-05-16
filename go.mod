@@ -1,4 +1,4 @@
-module git.druva.org/akash.yadav/gopy
+module github.com/Brax-1/gopy
 
 go 1.19
 

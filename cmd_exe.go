@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"git.druva.org/akash.yadav/gopy/bind"
+	"github.com/Brax-1/gopy/bind"
 	"github.com/gonuts/commander"
 	"github.com/gonuts/flag"
 )
@@ -35,7 +35,7 @@ When including multiple packages, list in order of increasing dependency, and us
 
 ex:
  $ gopy exe [options] <go-package-name> [other-go-package...]
- $ gopy exe git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy exe github.com/Brax-1/gopy/_examples/hi
 `,
 		Flag: *flag.NewFlagSet("gopy-exe", flag.ExitOnError),
 	}
@@ -55,7 +55,7 @@ ex:
 	cmd.Flag.String("author", "gopy", "author name")
 	cmd.Flag.String("email", "gopy@example.com", "author email")
 	cmd.Flag.String("desc", "", "short description of project (long comes from README.md)")
-	cmd.Flag.String("url", "https://git.druva.org/akash.yadav/gopy", "home page for project")
+	cmd.Flag.String("url", "https://github.com/Brax-1/gopy", "home page for project")
 	cmd.Flag.Bool("no-warn", false, "suppress warning messages, which may be expected")
 	cmd.Flag.Bool("no-make", false, "do not generate a Makefile, e.g., when called from Makefile")
 	cmd.Flag.Bool("dynamic-link", false, "whether to link output shared library dynamically to Python")

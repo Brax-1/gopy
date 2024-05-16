@@ -16,7 +16,7 @@ import (
 	"strings"
 	"testing"
 
-	"git.druva.org/akash.yadav/gopy/bind"
+	"github.com/Brax-1/gopy/bind"
 )
 
 var (
@@ -116,11 +116,11 @@ func TestGoPyErrors(t *testing.T) {
 	if err != nil {
 		t.Fatalf("could not run %v: %+v\n", strings.Join(cmd.Args, " "), err)
 	}
-	contains := `--- Processing package: git.druva.org/akash.yadav/gopy/_examples/gopyerrors ---
-ignoring python incompatible function: .func git.druva.org/akash.yadav/gopy/_examples/gopyerrors.NotErrorMany() (int, int): func() (int, int): gopy: second result value must be of type error: func() (int, int)
-ignoring python incompatible method: gopyerrors.func (*git.druva.org/akash.yadav/gopy/_examples/gopyerrors.Struct).NotErrorMany() (int, string): func() (int, string): gopy: second result value must be of type error: func() (int, string)
-ignoring python incompatible method: gopyerrors.func (*git.druva.org/akash.yadav/gopy/_examples/gopyerrors.Struct).TooMany() (int, int, string): func() (int, int, string): gopy: too many results to return: func() (int, int, string)
-ignoring python incompatible function: .func git.druva.org/akash.yadav/gopy/_examples/gopyerrors.TooMany() (int, int, string): func() (int, int, string): gopy: too many results to return: func() (int, int, string)
+	contains := `--- Processing package: github.com/Brax-1/gopy/_examples/gopyerrors ---
+ignoring python incompatible function: .func github.com/Brax-1/gopy/_examples/gopyerrors.NotErrorMany() (int, int): func() (int, int): gopy: second result value must be of type error: func() (int, int)
+ignoring python incompatible method: gopyerrors.func (*github.com/Brax-1/gopy/_examples/gopyerrors.Struct).NotErrorMany() (int, string): func() (int, string): gopy: second result value must be of type error: func() (int, string)
+ignoring python incompatible method: gopyerrors.func (*github.com/Brax-1/gopy/_examples/gopyerrors.Struct).TooMany() (int, int, string): func() (int, int, string): gopy: too many results to return: func() (int, int, string)
+ignoring python incompatible function: .func github.com/Brax-1/gopy/_examples/gopyerrors.TooMany() (int, int, string): func() (int, int, string): gopy: too many results to return: func() (int, int, string)
 `
 	if got, want := string(out), contains; !strings.Contains(got, want) {
 		t.Fatalf("%v does not contain\n%v\n", got, want)
@@ -968,8 +968,8 @@ func writeGoMod(t *testing.T, pkgDir, tstDir string) {
 	template := `
 module dummy
 
-require git.druva.org/akash.yadav/gopy v0.0.0
-replace git.druva.org/akash.yadav/gopy => %s
+require github.com/Brax-1/gopy v0.0.0
+replace github.com/Brax-1/gopy => %s
 `
 	contents := fmt.Sprintf(template, pkgDir)
 	if err := os.WriteFile(filepath.Join(tstDir, "go.mod"), []byte(contents), 0666); err != nil {

@@ -1,8 +1,8 @@
 gopy
 ====
 
-[![GoDoc](https://godoc.org/git.druva.org/akash.yadav/gopy?status.svg)](https://godoc.org/git.druva.org/akash.yadav/gopy)
-[![CI](https://git.druva.org/akash.yadav/gopy/workflows/CI/badge.svg)](https://git.druva.org/akash.yadav/gopy/actions)
+[![GoDoc](https://godoc.org/github.com/Brax-1/gopy?status.svg)](https://godoc.org/github.com/Brax-1/gopy)
+[![CI](https://github.com/Brax-1/gopy/workflows/CI/badge.svg)](https://github.com/Brax-1/gopy/actions)
 [![Build status](https://ci.appveyor.com/api/projects/status/229rc10wcvsd5t8f?svg=true)](https://ci.appveyor.com/project/sbinet/gopy)
 
 `gopy` generates (and compiles) a `CPython` extension module from a `go` package.
@@ -24,7 +24,7 @@ Currently using [pybindgen](https://pybindgen.readthedocs.io/en/latest/tutorial/
 ```sh
 $ python3 -m pip install pybindgen
 $ go install golang.org/x/tools/cmd/goimports@latest
-$ go install git.druva.org/akash.yadav/gopy@latest
+$ go install github.com/Brax-1/gopy@latest
 ```
 
 (This all assumes you have already installed [Go itself](https://golang.org/doc/install), and added `~/go/bin` to your `PATH`).
@@ -59,7 +59,7 @@ If you get a bunch of errors during linking in the build process, set `LIBDIR` o
 
 ## Community
 
-See the [CONTRIBUTING](https://git.druva.org/akash.yadav/gopy/blob/master/CONTRIBUTE.md) guide for pointers on how to contribute to `gopy`.
+See the [CONTRIBUTING](https://github.com/Brax-1/gopy/blob/master/CONTRIBUTE.md) guide for pointers on how to contribute to `gopy`.
 
 ## Documentation
 
@@ -68,7 +68,7 @@ A longer version of that talk is also available [here](http://talks.godoc.org/gi
 An article was also posted on the [GopherAcademy Advent-2015](https://blog.gopheracademy.com/advent-2015/gopy/).
 
 Documentation is available on [godoc](https://godoc.org):
- https://godoc.org/git.druva.org/akash.yadav/gopy
+ https://godoc.org/github.com/Brax-1/gopy
 
 The `pkg` and `exe` commands are for end-users and create a full standalone python package that can be installed locally using `make install` based on the auto-generated `Makefile`.  Theoretically these packages could be uploaded to https://pypi.org/ for wider distribution, but that would require a lot more work to handle all the different possible python versions and coordination with the Go source version, so it is easier to just do the local make install on your system.  The `gen` and `build` commands are used for testing and just generate / build the raw binding files only.
 
@@ -100,7 +100,7 @@ pkg generates and compiles (C)Python language bindings for a Go package, includi
 
 ex:
  $ gopy pkg [options] <go-package-name> [other-go-package...]
- $ gopy pkg git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy pkg github.com/Brax-1/gopy/_examples/hi
 
 Options:
   -author="gopy": author name
@@ -111,7 +111,7 @@ Options:
   -name="": name of output package (otherwise name of first package is used)
   -output="": output directory for root of package
   -symbols=true: include symbols in output
-  -url="https://git.druva.org/akash.yadav/gopy": home page for project
+  -url="https://github.com/Brax-1/gopy": home page for project
   -user="": username on https://www.pypa.io/en/latest/ for package name suffix
   -version="0.1.0": semantic version number -- can use e.g., git to get this from tag and pass as argument
   -vm="python": path to python interpreter
@@ -128,7 +128,7 @@ The primary need for an exe instead of a pkg dynamic library is when the main th
 
 ex:
  $ gopy exe [options] <go-package-name> [other-go-package...]
- $ gopy exe git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy exe github.com/Brax-1/gopy/_examples/hi
 
 Options:
   -author="gopy": author name
@@ -139,7 +139,7 @@ Options:
   -name="": name of output package (otherwise name of first package is used)
   -output="": output directory for root of package
   -symbols=true: include symbols in output
-  -url="https://git.druva.org/akash.yadav/gopy": home page for project
+  -url="https://github.com/Brax-1/gopy": home page for project
   -user="": username on https://www.pypa.io/en/latest/ for package name suffix
   -version="0.1.0": semantic version number -- can use e.g., git to get this from tag and pass as argument
   -vm="python": path to python interpreter
@@ -153,7 +153,7 @@ gen generates (C)Python language bindings for Go package(s).
 
 ex:
  $ gopy gen [options] <go-package-name> [other-go-package...]
- $ gopy gen git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy gen github.com/Brax-1/gopy/_examples/hi
 
 Options:
   -build-tags="": build tags to be passed to `go build`
@@ -174,7 +174,7 @@ build generates and compiles (C)Python language bindings for Go package(s).
 
 ex:
  $ gopy build [options] <go-package-name> [other-go-package...]
- $ gopy build git.druva.org/akash.yadav/gopy/_examples/hi
+ $ gopy build github.com/Brax-1/gopy/_examples/hi
 
 Options:
   -build-tags="": build tags to be passed to `go build`
@@ -199,8 +199,8 @@ Note: you now need to make a go.mod file if you don't already have one in your e
 
 ```sh
 $ go mod init dummy.com/dum
-$ go get git.druva.org/akash.yadav/gopy/_examples/hi
-$ gopy build -output=out -vm=python3 git.druva.org/akash.yadav/gopy/_examples/hi
+$ go get github.com/Brax-1/gopy/_examples/hi
+$ gopy build -output=out -vm=python3 github.com/Brax-1/gopy/_examples/hi
 $ ls out
 Makefile  __init__.py  __pycache__/  _hi.so*  build.py  go.py  hi.c  hi.go  hi.py  hi_go.h  hi_go.so
 ```
@@ -233,13 +233,13 @@ packages directly from the `python` interactive shell:
 
 ```python
 >>> import gopy
->>> hi = gopy.load("git.druva.org/akash.yadav/gopy/_examples/hi")
+>>> hi = gopy.load("github.com/Brax-1/gopy/_examples/hi")
 gopy> inferring package name...
-gopy> loading 'git.druva.org/akash.yadav/gopy/_examples/hi'...
-gopy> importing 'git.druva.org/akash.yadav/gopy/_examples/hi'
+gopy> loading 'github.com/Brax-1/gopy/_examples/hi'...
+gopy> importing 'github.com/Brax-1/gopy/_examples/hi'
 
 >>> print hi
-<module 'git.druva.org/akash.yadav/gopy/_examples/hi' from '/some/path/.../hi.so'>
+<module 'github.com/Brax-1/gopy/_examples/hi' from '/some/path/.../hi.so'>
 
 >>> print hi.__doc__
 package hi exposes a few Go functions to be wrapped and used from Python.
@@ -248,7 +248,7 @@ package hi exposes a few Go functions to be wrapped and used from Python.
 ## Binding generation using Docker (for cross-platform builds)
 
 ```
-$ cd git.druva.org/akash.yadav/gopy/_examples/hi
+$ cd github.com/Brax-1/gopy/_examples/hi
 $ docker run --rm -v `pwd`:/go/src/in -v `pwd`:/out gopy/gopy app bind -output=/out in
 $ file hi.so
 hi.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
@@ -257,7 +257,7 @@ hi.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linke
 The docker image can also be built on local machine:
 
 ```
-$ cd $GOPATH/src/git.druva.org/akash.yadav/gopy
+$ cd $GOPATH/src/github.com/Brax-1/gopy
 $ docker build -t go-python/gopy .
 $ docker run -it --rm go-python/gopy
 ```
@@ -265,7 +265,7 @@ $ docker run -it --rm go-python/gopy
 ## Support Matrix
 
 To know what features are supported on what backends, please refer to the
-[Support matrix ](https://git.druva.org/akash.yadav/gopy/blob/master/SUPPORT_MATRIX.md).
+[Support matrix ](https://github.com/Brax-1/gopy/blob/master/SUPPORT_MATRIX.md).
 
 ## setup.py
 
