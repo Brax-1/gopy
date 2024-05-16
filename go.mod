@@ -11,4 +11,4 @@ require (
 
 require golang.org/x/mod v0.14.0 // indirect
 
-replace git.druva.org/akash.yadav/gopy => github.com/Brax-1/gopy
+replace git.druva.org/akash.yadav/gopy => github.com/Brax-1/gopy v0.3.0
