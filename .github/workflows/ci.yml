@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  TAGS: "-tags=ci"
+  COVERAGE: "-coverpkg=git.druva.org/akash.yadav/gopy/..."
+  # Init() in main_test will make sure all backends are available if
+  # GOPY_TRAVIS_CI is set
+  GOPY_TRAVIS_CI: 1
+  GOTRACEBACK: crash
+  GO111MODULE: auto
+
+jobs:
+
+  build:
+    name: Build
+    strategy:
+      matrix:
+        go-version: [1.22.x, 1.21.x]
+        platform: [ubuntu-latest]
+        #platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go-version }}
+ 
+    - name: Cache-Go
+      uses: actions/cache@v1
+      with:
+        path: |
+            ~/go/pkg/mod              # Module download cache
+            ~/.cache/go-build         # Build cache (Linux)
+            ~/Library/Caches/go-build # Build cache (Mac)
+            '%LocalAppData%\go-build' # Build cache (Windows)
+
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+ 
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Linux packages
+      if: matrix.platform == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install curl libffi-dev python3-cffi python3-pip
+        # install pybindgen
+        python3 -m pip install --user -U pybindgen
+        # install goimports
+        go install golang.org/x/tools/cmd/goimports@latest
+
+ 
+    - name: Build-Linux
+      if: matrix.platform == 'ubuntu-latest'
+      run: |
+        make
+    - name: Test Linux
+      if: matrix.platform == 'ubuntu-latest'
+      run: |
+        make test
+    - name: Upload-Coverage
+      if: matrix.platform == 'ubuntu-latest'
+      uses: codecov/codecov-action@v1
